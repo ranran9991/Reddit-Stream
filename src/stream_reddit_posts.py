@@ -2,11 +2,12 @@ import praw
 from dotenv import load_dotenv
 from consts import CLIENT_ID, CLIENT_SECRET, USER_AGENT, SUBREDDIT
 from src.entities.post import Post
+from kafka import KafkaProducer
 
 load_dotenv()
 # # Initialize Kafka Producer
-# producer = KafkaProducer(bootstrap_servers=KAFKA_BOOTSTRAP_SERVERS,
-#                          value_serializer=lambda x: json.dumps(x).encode('utf-8'))
+producer = KafkaProducer(bootstrap_servers=KAFKA_BOOTSTRAP_SERVERS,
+                         value_serializer=lambda x: json.dumps(x).encode('utf-8'))
 
 # Initialize Reddit
 reddit = praw.Reddit(client_id=CLIENT_ID,

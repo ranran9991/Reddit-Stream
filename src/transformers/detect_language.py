@@ -2,12 +2,10 @@ import re
 from langdetect import detect_langs
 
 
-def is_mostly_hebrew(text: str) -> bool:
+def get_language(text: str) -> str:
     lang_probas = detect_langs(text)
-    for prob in lang_probas:
-        if prob.lang == 'he' and prob.prob >= 0.9:
-            return True
-    return False
+    lang = lang_probas[0].lang
+    return lang
 
 
 def remove_non_hebrew(text):

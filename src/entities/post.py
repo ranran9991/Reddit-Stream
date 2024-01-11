@@ -20,5 +20,5 @@ class Post(Embeddable):
         content_value = self.__str__()
         source = 'posts'
         time = self.created_utc
-        message = process_json_data(content_value, source, time)
+        message = process_json_data(self.post_id, content_value, source, time)
         return message

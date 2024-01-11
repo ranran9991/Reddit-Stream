@@ -16,7 +16,7 @@ class Comment(Embeddable):
 
     def to_protocolized_message(self):
         content_value = self.__str__()
-        source = 'posts'
+        source = 'comments'
         time = self.created_utc
-        message = process_json_data(content_value, source, time)
+        message = process_json_data(self.post_id, content_value, source, time)
         return message

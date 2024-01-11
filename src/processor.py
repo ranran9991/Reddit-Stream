@@ -5,7 +5,7 @@ from data_model import PipelineItem, PipelineContext, ProtocolizedMessage, Item,
     General, Source
 
 
-def process_json_data(content_value, source_value, system_time_value):
+def process_json_data(item_id, content_value, source_value, system_time_value):
     """
     Processes JSON data by extracting specific attributes and sending them to the pipeline.
 
@@ -27,9 +27,6 @@ def process_json_data(content_value, source_value, system_time_value):
     """
 
     try:
-
-        item_id = uuid4()
-
         current_time = datetime.utcnow()
         start_time = int((current_time - timedelta(hours=1)).timestamp())
         end_time = int(current_time.timestamp())
